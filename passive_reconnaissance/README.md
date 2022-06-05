@@ -1,6 +1,8 @@
 # Passive Reconnaissance
 
-## nslookup and dig
+Learn about the essential tools for passive reconnaissance, such as whois, nslookup, and dig.
+
+## `whois`, `nslookup` and `dig`
 
 | Query type | Result |
 | :----: | :----: |
