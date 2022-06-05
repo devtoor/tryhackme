@@ -4,8 +4,6 @@ Learn how to leverage the Nmap network scanner to discover live hosts and open p
 
 ## Nmap Live Host Discovery
 
----
-
 | Scan TYpe | Example Command |
 | :----: | :-----: |
 | ARP Scan  | `sudo nmap -PR -sn <MACHINE_IP>/24` |
