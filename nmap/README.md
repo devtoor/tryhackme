@@ -109,3 +109,27 @@ Learn how to leverage the Nmap network scanner to discover live hosts and open p
 | `safe` | Safe scripts that won’t crash the target |
 | `version` | Retrieve service versions |
 | `vuln` | Checks for vulnerabilities or exploit vulnerable services |
+
+### Searching for Scripts
+
+[Nmap NSE doc](https://nmap.org/nsedoc/)
+
+```bash
+grep <srv|cat> /usr/share/nmap/scripts/script.db
+```
+
+```bash
+ls -l /usr/share/nmap/scripts/<srv>*
+```
+
+### Installing New Scripts
+
+```bash
+sudo apt update && sudo apt install nmap
+```
+
+```bash
+sudo wget -O /usr/share/nmap/scripts/<script-name>.nse https://svn.nmap.org/nmap/scripts/<script-name>.nse
+
+nmap --script-updatedb
+```
