@@ -39,7 +39,7 @@ Learn about common protocols such as HTTP, FTP, POP3, SMTP and IMAP, along with 
 Syntax:
 
 ```bash
-hydra -l <username> -P wordlist.txt <server> <service>
+hydra -l <username> -P <wordlist.txt> <server> <service>
 ```
 
 | Option | Explanation |
