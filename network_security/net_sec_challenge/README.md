@@ -1,5 +1,7 @@
 # Net Sec Challenge
 
+[Net Sec Challenge Room](https://tryhackme.com/room/netsecchallenge)
+
 Practice the skills you have learned in the Network Security module.
 
 ## Active Machine Information

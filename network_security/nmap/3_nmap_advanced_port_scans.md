@@ -1,5 +1,7 @@
 # Nmap Advanced Port Scans
 
+[Nmap Advanced Port Scans Room](https://tryhackme.com/room/nmap03)
+
 Learn advanced techniques such as null, FIN, Xmas, and idle (zombie) scans, spoofing, in addition to FW and IDS evasion.
 
 | Port Scan Type | Example Command |

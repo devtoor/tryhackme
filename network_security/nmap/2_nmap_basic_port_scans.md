@@ -1,5 +1,7 @@
 # Nmap Basic Port Scans
 
+[Nmap Basic Port Scans Room](https://tryhackme.com/room/nmap02)
+
 Learn in-depth how nmap TCP connect scan, TCP SYN port scan, and UDP port scan work.
 
 | Port Scan Type | Example Command |

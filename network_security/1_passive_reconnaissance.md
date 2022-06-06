@@ -1,5 +1,7 @@
 # Passive Reconnaissance
 
+[Passive Reconnaissance Room](https://tryhackme.com/room/passiverecon)
+
 Learn about the essential tools for passive reconnaissance, such as whois, nslookup, and dig.
 
 ## `whois`, `nslookup` and `dig`

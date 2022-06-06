@@ -1,5 +1,7 @@
 # Metasploit: Introduction
 
+[Metasploit: Introduction Room](https://tryhackme.com/room/metasploitintro)
+
 An introduction to the main components of the Metasploit Framework.
 
 - `Auxiliary`: Any supporting module, such as scanners, crawlers and fuzzers, can be found here.

@@ -1,5 +1,7 @@
 # Nmap
 
+[Nmap Module](https://tryhackme.com/module/nmap)
+
 Learn how to leverage the Nmap network scanner to discover live hosts and open ports using basic and advanced scan options.
 
 ---
