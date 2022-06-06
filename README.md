@@ -1,3 +1,5 @@
 # TryHackMe
 
-Hands-on cyber security training
+CTF-Writeups | Notes
+
+By: Jay Morales
