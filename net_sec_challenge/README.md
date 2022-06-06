@@ -4,10 +4,9 @@ Practice the skills you have learned in the Network Security module.
 
 ## Active Machine Information
 
-| | |
-| :---- | :---- |
-| **Title** | NetSecMod Room 09 Challenge v1.11 |
-| **IP Address** | 10.10.91.0 |
+| Title | IP Address |
+| :----: | :----: |
+| NetSecMod Room 09 Challenge v1.11 | 10.10.91.0 |
 
 ### Task 1
 
