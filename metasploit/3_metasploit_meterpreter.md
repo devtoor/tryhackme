@@ -1,6 +1,6 @@
 # Metasploit: Meterpreter
 
-[Metasploit: Meterpreter](https://tryhackme.com/room/meterpreter)
+[Metasploit: Meterpreter Room](https://tryhackme.com/room/meterpreter)
 
 Take a deep dive into Meterpreter, and see how in-memory payloads can be used for post-exploitation.
 
