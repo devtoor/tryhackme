@@ -1,3 +1,12 @@
+<!-- TOC -->
+
+- [Net Sec Challenge](#net-sec-challenge)
+    - [Active Machine Information](#active-machine-information)
+    - [Task 1](#task-1)
+    - [Task 2](#task-2)
+
+<!-- /TOC -->
+
 # Net Sec Challenge
 
 [Net Sec Challenge Room](https://tryhackme.com/room/netsecchallenge)
@@ -10,13 +19,13 @@ Practice the skills you have learned in the Network Security module.
 | :----: | :----: |
 | NetSecMod Room 09 Challenge v1.11 | 10.10.91.0 |
 
-### Task 1
+## Task 1
 
 ```bash
 export IP=10.10.91.0
 ```
 
-### Task 2
+## Task 2
 
 ```bash
 sudo nmap -A -p- -T4 -vv -oN initial.nmap $IP

@@ -1,3 +1,13 @@
+<!-- TOC -->
+
+- [Active Reconnaissance](#active-reconnaissance)
+    - [Web Browser](#web-browser)
+    - [Telnet](#telnet)
+    - [Netcat](#netcat)
+    - [Commands](#commands)
+
+<!-- /TOC -->
+
 # Active Reconnaissance
 
 [Active Reconnaissance Room](https://tryhackme.com/room/activerecon)
@@ -49,6 +59,8 @@ host: <netcat>
 > - The option `-p` should appear just before the port number you want to listen on.
 > - The option `-n` will avoid DNS lookups and warnings.
 > - Port numbers less than 1024 require root privileges to listen on.
+
+## Commands
 
 | Command | Example |
 | :----: | :----: |

@@ -1,3 +1,11 @@
+<!-- TOC -->
+
+- [Metasploit: Meterpreter](#metasploit-meterpreter)
+    - [Meterpreter commands](#meterpreter-commands)
+    - [Post-Exploitation Challenge](#post-exploitation-challenge)
+
+<!-- /TOC -->
+
 # Metasploit: Meterpreter
 
 [Metasploit: Meterpreter Room](https://tryhackme.com/room/meterpreter)
@@ -68,6 +76,8 @@ Others Commands (these will be listed under different menu categories in the hel
 - `webcam_stream`: Plays a video stream from the specified webcam
 - `getsystem`: Attempts to elevate your privilege to that of local system
 - `hashdump`: Dumps the contents of the SAM database
+
+## Post-Exploitation Challenge
 
 | Title | IP Address |
 | :----: | :----: |

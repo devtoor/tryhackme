@@ -1,3 +1,11 @@
+<!-- TOC -->
+
+- [Passive Reconnaissance](#passive-reconnaissance)
+    - [whois, nslookup and dig](#whois-nslookup-and-dig)
+    - [Resources](#resources)
+
+<!-- /TOC -->
+
 # Passive Reconnaissance
 
 [Passive Reconnaissance Room](https://tryhackme.com/room/passiverecon)
@@ -25,7 +33,7 @@ Learn about the essential tools for passive reconnaissance, such as whois, nsloo
 | Lookup DNS MX records at DNS server | `dig @<dns-server> <domain.tld> MX` |
 | Lookup DNS TXT records | `dig <domain.tld> TXT` |
 
-Resources:
+## Resources
 
 [DNSDumpster](https://dnsdumpster.com/)
 
