@@ -57,7 +57,7 @@ gobuster dir -u 10.10.136.127:80 -w /usr/share/wordlists/dirbuster/directory-lis
 
 ## Exploitation
 
-Using `R1ckRul3s:Wubbalubbadubdub`:
+Using `R1ckRul3s:Wubbalubbadubdub`
 
 `http://10.10.136.127/login.php`
 
@@ -76,10 +76,10 @@ sudo -l
 > `(ALL) NOPASSWD: ALL`
 
 ```bash
-ls
+ls -la
 ```
 
-> `Sup3rS3cretPickl3Ingred.txt`
+> `-rwxr-xr-x 1 ubuntu ubuntu   17 Feb 10  2019 Sup3rS3cretPickl3Ingred.txt`
 
 `http://10.10.136.127/Sup3rS3cretPickl3Ingred.txt`
 
