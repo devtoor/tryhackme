@@ -243,7 +243,7 @@ lhost:
 
 ```cmd
 cd ../..
-dir flagUSP /s
+dir flagUSP.txt /s
 ```
 > ` Directory of C:\Users\Cora\Documents 10/14/2021  11:54 PM 16 flagUSP.txt`
 
