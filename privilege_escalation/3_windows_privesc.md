@@ -1,3 +1,25 @@
+<!-- TOC -->
+
+- [Windows Privesc](#windows-privesc)
+    - [Information Gathering](#information-gathering)
+        - [User Enumeration](#user-enumeration)
+        - [Collecting system information](#collecting-system-information)
+        - [Searching files](#searching-files)
+        - [Patch level](#patch-level)
+        - [Network Connections](#network-connections)
+        - [Scheduled Task](#scheduled-task)
+        - [Drivers](#drivers)
+        - [Antivirus](#antivirus)
+    - [Tools of the trade](#tools-of-the-trade)
+        - [WinPEAS](#winpeas)
+        - [PowerUp](#powerup)
+        - [Windows Exploit Suggester](#windows-exploit-suggester)
+        - [Metasploit](#metasploit)
+    - [Vulnerable Software](#vulnerable-software)
+    - [DLL Hijacking](#dll-hijacking)
+
+<!-- /TOC -->
+
 # Windows Privesc
 
 [Windows Privesc Room](https://tryhackme.com/room/winprivesc)
@@ -92,7 +114,7 @@ windows-exploit-suggester.py --database 2021-09-21-mssb.xls --systeminfo sysinfo
 multi/recon/local_exploit_suggester
 ```
 
-## Vulnerable SOftware
+## Vulnerable Software
 
 ```cmd
 wmic product
