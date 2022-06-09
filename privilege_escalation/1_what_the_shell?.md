@@ -1,3 +1,20 @@
+<!-- TOC -->
+
+- [What the Shell?](#what-the-shell)
+    - [Tools](#tools)
+        - [Reverse Shells](#reverse-shells)
+        - [Bind Shells](#bind-shells)
+    - [Netcat Shell Stabilisation](#netcat-shell-stabilisation)
+        - [Fully stable Linux tty reverse shell Only for Linux:](#fully-stable-linux-tty-reverse-shell-only-for-linux)
+    - [Socat Encrypted Shells](#socat-encrypted-shells)
+        - [Reverse shell](#reverse-shell)
+        - [Bind shell](#bind-shell)
+    - [Common Shell Payloads](#common-shell-payloads)
+    - [Next Step](#next-step)
+    - [Practice and Examples](#practice-and-examples)
+
+<!-- /TOC -->
+
 # What the Shell?
 
 [What the Shell? Room](https://tryhackme.com/room/introtoshells)

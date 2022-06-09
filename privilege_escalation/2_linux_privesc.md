@@ -1,3 +1,17 @@
+<!-- TOC -->
+
+- [Linux PrivEsc](#linux-privesc)
+    - [Enumeration](#enumeration)
+    - [Privilege Esvalation: Sudo](#privilege-esvalation-sudo)
+    - [Privilege Escalation: SUID](#privilege-escalation-suid)
+    - [Privilege Escalation: Capabilities](#privilege-escalation-capabilities)
+    - [Privilege Escalation: Cron Jobs](#privilege-escalation-cron-jobs)
+    - [Privilege Escalation: PATH](#privilege-escalation-path)
+    - [Privilege Escalation: NFS](#privilege-escalation-nfs)
+    - [Capstone Challenge](#capstone-challenge)
+
+<!-- /TOC -->
+
 # Linux PrivEsc
 
 [Linux PrivEsc Room](https://tryhackme.com/room/linprivesc)
@@ -112,7 +126,7 @@ cat /home/matt/flag1.txt
 
 > `THM-28392872729920`
 
-## Privilege Esvalation Sudo
+## Privilege Esvalation: Sudo
 
 ```bash
 sudo -l
@@ -448,7 +462,7 @@ cat /home/matt/flag7.txt
 
 > `THM-89384012`
 
-## Capstond Challenge
+## Capstone Challenge
 
 | Title | IP Address | Username | Password |
 | :---- | :---- | :---- | :---- |
