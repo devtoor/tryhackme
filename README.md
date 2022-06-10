@@ -7,6 +7,7 @@ CTF-Writeups | Notes
 - [Basic Pentesting](basic_pentesting/README.md)
 - [Net Sec Challenge](network_security/net_sec_challenge/README.md)
 - [Pickle Rick](pickle_rick/README.md)
+- [Metasploit/Post-Exploitation Challenge](metasploit/3_metasploit_meterpreter.md#post-exploitation-challenge)
 - [RootMe](rootme/README.md)
 
 ## Modules
