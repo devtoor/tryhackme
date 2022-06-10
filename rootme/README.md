@@ -15,7 +15,7 @@ A ctf for beginners, can you root me?
 
 | Title | IP Address |
 | :---- | :---- |
-| RootMe | 1*.**.***.*** |
+| RootMe | `1*.**.***.***` |
 
 ## Reconnaissance
 
