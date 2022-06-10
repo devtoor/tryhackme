@@ -5,6 +5,7 @@ CTF-Writeups | Notes
 ## CTF
 
 - [Basic Pentesting](basic_pentesting/README.md)
+- [Pickle Rick](pickle_rick/README.md)
 
 ## Modules
 
