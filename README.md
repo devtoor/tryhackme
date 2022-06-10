@@ -1,6 +1,6 @@
 # TryHackMe
 
-CTF-Writeups | Notes
+CTF-Writeups and Notes
 
 ## CTF
 
