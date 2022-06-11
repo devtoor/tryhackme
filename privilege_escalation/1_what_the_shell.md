@@ -226,5 +226,5 @@ net localgroup administrators <username> /add
 
 | Title | IP Address | Username | Password |
 | :---- | :---- | :---- | :---- |
-| Linux Shell Practice | 10.10.131.227 | shell | TryH4ckM3! |
-| Win Shell Practice | 10.10.123.247 | Administrator | TryH4ckM3! |
+| Linux Shell Practice | `1*.**.***.***` | shell | TryH4ckM3! |
+| Win Shell Practice | `1*.**.***.***` | Administrator | TryH4ckM3! |
