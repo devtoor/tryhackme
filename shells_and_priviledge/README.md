@@ -10,4 +10,4 @@ Having limited user access on a system won't give you the necessary privileges y
 
 1. [What the Shell?](../privilege_escalation/1_what_the_shell.md)
 2. [Common Linux Privesc](2_common_linux_privesc.md)
-3. [Linux PrivEsc]
+3. [Linux PrivEsc](3_linux_privesc.md)
