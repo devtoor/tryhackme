@@ -5,6 +5,7 @@ CTF-Writeups and Notes
 ## CTF
 
 - [Basic Pentesting](basic_pentesting/README.md)
+- [Internal](internal/README.md)
 - [Linux PrivEsc/Capstone Challenge](privilege_escalation/2_linux_privesc.md#capstone-challenge)
 - [Net Sec Challenge](network_security/net_sec_challenge/README.md)
 - [Overpass](overpass/README.md)
