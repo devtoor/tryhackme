@@ -40,13 +40,13 @@ Note - this room can be completed without Metasploit
 
 | Title | IP Address |
 | :---- | :---- |
-| Internal | 10.10.86.124 |
+| Internal | `1*.**.**.***` |
 
 ## Discovery and Scanning
 
 ```bash
-sudo nmap -p- -T4 -Pn 10.10.86.124
-nmap -p22,80 -sV -sC -T4 -Pn -oA initial 10.10.86.124
+sudo nmap -p- -T4 -Pn 1*.**.**.***
+nmap -p22,80 -sV -sC -T4 -Pn -oA initial 1*.**.**.***
 ```
 
 > ```
@@ -65,18 +65,18 @@ nmap -p22,80 -sV -sC -T4 -Pn -oA initial 10.10.86.124
 > ```
 
 ```bash
-dirsearch -u 10.10.86.124 -r -t 120
+dirsearch -u 1*.**.**.*** -r -t 120
 ```
 
 > ```
 > . . .
 > [22:54:33] 200 -    4KB - /blog/wp-login.php                                
-> [22:54:33] 301 -  311B  - /blog  ->  http://10.10.86.124/blog/     (Added to queue)
+> [22:54:33] 301 -  311B  - /blog  ->  http://1*.**.**.***/blog/     (Added to queue)
 > [22:54:33] 200 -   53KB - /blog/                                            
 > [22:55:00] 200 -   11KB - /index.html                                       
-> [22:55:03] 301 -  317B  - /javascript  ->  http://10.10.86.124/javascript/     (Added to queue)
+> [22:55:03] 301 -  317B  - /javascript  ->  http://1*.**.**.***/javascript/     (Added to queue)
 > [22:55:24] 200 -   13KB - /phpmyadmin/doc/html/index.html                   
-> [22:55:26] 301 -  317B  - /phpmyadmin  ->  http://10.10.86.124/phpmyadmin/     (Added to queue)
+> [22:55:26] 301 -  317B  - /phpmyadmin  ->  http://1*.**.**.***/phpmyadmin/     (Added to queue)
 > [22:55:29] 200 -   10KB - /phpmyadmin/                                      
 > [22:55:29] 200 -   10KB - /phpmyadmin/index.php                             
 > [22:55:40] 403 -  277B  - /server-status                                    
@@ -86,7 +86,7 @@ dirsearch -u 10.10.86.124 -r -t 120
 > ```
 
 ```
-sudo echo "10.10.86.124 internal.thm" >> /etc/hosts
+sudo echo "1*.**.**.*** internal.thm" >> /etc/hosts
 wpscan --url http://internal.thm/blog -e vp,vt,u --api-token *******************************************
 ```
 
