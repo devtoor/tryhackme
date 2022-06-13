@@ -16,12 +16,12 @@ Learn about active recon, web app attacks and privilege escalation.
 
 | Title | IP Address |
 | :---- | :---- |
-| VulnUniversity | 10.10.154.3 |
+| VulnUniversity | 1*.**.***.* |
 
 ## Reconnaissance
 
 ```bash
-nmap -sV 10.10.154.3
+nmap -sC -sV 1*.**.***.*
 ```
 
 > ```
@@ -47,16 +47,16 @@ nmap -sV 10.10.154.3
 ## Locating directories using GoBuster
 
 ```bash
-gobuster dir -u http://10.10.154.3:3333 -w /usr/share/wordlists/dirbuster/directory-list-2.3-small.txt -t 100
+gobuster dir -u http://1*.**.***.*:3333 -w /usr/share/wordlists/dirbuster/directory-list-2.3-small.txt -t 100
 ```
 
-```
-/images               (Status: 301) [Size: 318] [--> http://10.10.154.3:3333/images/]                                 
-/css                  (Status: 301) [Size: 315] [--> http://10.10.154.3:3333/css/]                                    
-/js                   (Status: 301) [Size: 314] [--> http://10.10.154.3:3333/js/]                                     
-/fonts                (Status: 301) [Size: 317] [--> http://10.10.154.3:3333/fonts/]                                  
-/i*******             (Status: 301) [Size: 320] [--> http://10.10.154.3:3333/i*******/]
-```
+> ```
+> /images               (Status: 301) [Size: 318] [--> http://1*.**.***.*:3333/images/]                                 
+> /css                  (Status: 301) [Size: 315] [--> http://1*.**.***.*:3333/css/]                                    
+> /js                   (Status: 301) [Size: 314] [--> http://1*.**.***.*:3333/js/]                                     
+> /fonts                (Status: 301) [Size: 317] [--> http://1*.**.***.*:3333/fonts/]                                  
+> /i*******             (Status: 301) [Size: 320] [--> http://1*.**.***.*:3333/i*******/]
+> ```
 
 ## Compromise the webserver
 
