@@ -16,7 +16,7 @@ Learn about active recon, web app attacks and privilege escalation.
 
 | Title | IP Address |
 | :---- | :---- |
-| VulnUniversity | 1*.**.***.* |
+| VulnUniversity | `1*.**.***.*` |
 
 ## Reconnaissance
 
