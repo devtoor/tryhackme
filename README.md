@@ -1,4 +1,4 @@
-CTF-Writeups and Notes
+CTF-Writeups and Module notes
 
 ## CTF
 
