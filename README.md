@@ -1,5 +1,3 @@
-# TryHackMe
-
 CTF-Writeups and Notes
 
 ## CTF
